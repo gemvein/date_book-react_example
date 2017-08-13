@@ -73,7 +73,7 @@ class Calendars extends Component {
             className = event.css_class;
           }
 
-          if(event.all_day == true) {
+          if(event.all_day === true) {
               className = className + ' all-day';
           } else {
               className = className + ' part-day';
