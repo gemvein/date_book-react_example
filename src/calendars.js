@@ -1,5 +1,5 @@
 import './calendars.css'
-import React from 'react';
+import React, { Component} from 'react';
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
@@ -8,17 +8,32 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 // to the correct localizer.
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
-const Calendars = () => (
-  <div className="calendars">
-    Foo. BAR!
-    {/* <BigCalendar
-    /> */}
-  </div>
-)
+class Calendars extends Component {
+
+ static defaultProps = {
+    className: ''
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      events: []
+    }
+  }
+
+  render() {
+    return (
+      <div className="calendars">
+        <BigCalendar
+          events={[]}
+          startAccessor='startDate'
+          endAccessor='endDate'
+        />
+      </div>
+    )
+  }
   
-export default Calendars
-
-
   // componentDidMount() {
   //   fetch('http://localhost:3000/date_book/api', {
   //     method: 'post',
@@ -52,6 +67,12 @@ export default Calendars
   //     .then((data) => data.data.event_occurrences)
   //     .then((events) => this.setState({ events }))
   // }
+
+}
+
+export default Calendars
+
+
 
 
 
