@@ -29,6 +29,8 @@ class Calendars extends Component {
           events={this.state.events}
           startAccessor='startDate'
           endAccessor='endDate'
+          titleAccessor='title'
+          allDayAccessor='allDay'
         />
       </div>
     )
@@ -89,11 +91,10 @@ class Calendars extends Component {
               allDay: event.all_day,
               url: occurrence.url,
               popover_url: occurrence.popover_url,
-              start: occurrence.start,
-              end: occurrence.end
+              startDate: occurrence.start,
+              endDate: occurrence.end
           });
         })
-        console.log(event_occurrences)
         return event_occurrences
       } )
       .then((events) => this.setState({ events }))
