@@ -1,21 +1,28 @@
 {
   "name": "date_book-react_example",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-big-calendar": "^0.14.4",
     "react-dom": "^15.6.1",
+    "react-relay": "^1.2.0",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.11",
     "source-map-explorer": "^1.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "build": "node ./setup && react-scripts build",
+    "test": "node ./setup && react-scripts test --env=jsdom",
+    "start": "node ./setup && react-scripts start",
     "eject": "react-scripts eject",
-    "analyze": "source-map-explorer build/static/js/main.*"
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "relay": "relay-compiler --src ./src --schema path/schema.graphql"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^1.2.0",
+    "relay-compiler": "^1.2.0"
   }
 }
