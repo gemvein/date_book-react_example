@@ -19,7 +19,7 @@
     "start": "node ./setup && react-scripts start",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer build/static/js/main.*",
-    "relay": "relay-compiler --src ./src --schema path/schema.graphql"
+    "relay": "curl http://localhost:3000/date_book_schema.graphql -o ./src/schema.graphql && relay-compiler --src ./src --schema ./src/schema.graphql"    
   },
   "devDependencies": {
     "babel-plugin-relay": "^1.2.0",

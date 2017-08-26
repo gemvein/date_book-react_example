@@ -1,0 +1,53 @@
+# DateBook Calendars
+type Calendar {
+  created_at: DateTime
+  css_class: String
+  description: String
+  event_occurrences: [EventOccurrences]
+  events: [Event]
+  id: ID
+  name: String
+  slug: String!
+  updated_at: DateTime
+}
+
+# Date with Time
+scalar DateTime
+
+# DateBook Events
+type Event {
+  all_day: Boolean
+  background_color: String
+  border_color: String
+  calendar: Calendar
+  created_at: DateTime
+  css_class: String
+  description: String
+  duration: String
+  end: String
+  id: ID!
+  name: String
+  slug: String
+  start: String
+  text_color: String
+  updated_at: DateTime
+  url: String
+}
+
+# DateBook Event Occurrences
+type EventOccurrences {
+  end: String
+  event: Event
+  id: ID!
+  popover_url: String
+  start: String
+  url: String
+}
+
+type Query {
+  # Find a calendar by slug
+  calendar(slug: String): Calendar
+
+  # Find all event occurrences in range
+  event_occurrences(ending_after: String, starting_before: String): [EventOccurrences]
+}
