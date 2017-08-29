@@ -64,9 +64,9 @@ class Calendars extends Component {
                     }
 
                     if (event.all_day === true) {
-                      className = className + ' all-day'
+                      className = className + ' event-all-day'
                     } else {
-                      className = className + ' part-day'
+                      className = className + ' event-part-day'
                     }
                     return ({
                       id: event.id,
