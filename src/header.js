@@ -3,7 +3,7 @@ import './header.css'
 
 const Header = () => (
   <div className="header">
-    <h1>Datebook React Example Site</h1>
+    <h1 className="header-headline">Datebook React Example Site</h1>
   </div>
 )
 

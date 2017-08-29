@@ -1,6 +1,9 @@
 .header {
-  background-color: #1C203E;
-  height: 20vh;
-  padding: 1.5rem;
+  background-color: cornflowerblue;
+  padding: .75rem;
   color: white;
+}
+
+.header-headline {
+    line-height: 1.1;
 }
