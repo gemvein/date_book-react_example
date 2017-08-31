@@ -10,6 +10,28 @@ import environment from './environment'
 // to the correct localizer.
 BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
 
+function StyledEvent({ event }) {
+  let style = ''
+  if (event.textColor != null) {
+    style = `${style} color: ${event.textColor};`
+  }
+  if (event.backgroundColor != null) {
+    style = `${style} background-color: ${event.backgroundColor};`
+  }
+  if (event.borderColor != null) {
+    style = `${style} border-color: ${event.borderColor};`
+  }
+  return (
+      <span className={event.className} style={style}>
+      <strong>
+      {event.title}
+      </strong>
+        { event.desc && (':  ' + event.desc)}
+    </span>
+  )
+}
+
+
 class Calendars extends Component {
 
   render() {
@@ -31,13 +53,19 @@ class Calendars extends Component {
                       slug,
                       all_day,
                       css_class,
-                      text_color,
-                      background_color
-                      border_color
+                      calendar {
+                        css_class,
+                        text_color,
+                        background_color,
+                        border_color
+                      }
                     }
                   }
                 }
               `}
+
+
+
               // query={graphql`
               //     query pageQuery($pageSlug: String!, $userSlug: String!) {
               //       page(slug: $pageSlug, user_id: $userSlug) {
@@ -62,11 +90,14 @@ class Calendars extends Component {
                     if (event.css_class !== null) {
                       className = event.css_class
                     }
+                    if (event.calendar.css_class !== null) {
+                      className = `${className} ${event.css_class}`
+                    }
 
                     if (event.all_day === true) {
-                      className = className + ' event-all-day'
+                      className = `${className} event event-all-day`
                     } else {
-                      className = className + ' event-part-day'
+                      className = `${className} event event-part-day`
                     }
                     return ({
                       id: event.id,
@@ -79,8 +110,8 @@ class Calendars extends Component {
                       allDay: event.all_day,
                       url: occurrence.url,
                       popover_url: occurrence.popover_url,
-                      startDate: occurrence.start,
-                      endDate: occurrence.end
+                      startDate: moment(occurrence.start).toDate(),
+                      endDate: moment(occurrence.end).toDate()
                     })
                   })
 
@@ -90,6 +121,14 @@ class Calendars extends Component {
                       endAccessor='endDate'
                       titleAccessor='title'
                       allDayAccessor='allDay'
+
+                      components={
+                        {
+                          month: {
+                            event: StyledEvent
+                          }
+                        }
+                      }
                   />
                 }
                 return <div>Loading</div>
