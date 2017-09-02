@@ -1,10 +1,15 @@
-import React from 'react';
-import './header.css'
+import React from 'react'
+import {Container, Menu} from 'semantic-ui-react'
 
 const Header = () => (
-  <div className="header">
-    <h1 className="header-headline">Datebook React Example Site</h1>
-  </div>
+    <Menu fixed='top' inverted>
+      <Container>
+        <Menu.Item as='a' header>
+          Date Book &#8212; React Example Site
+        </Menu.Item>
+        <Menu.Item as='a'>Home</Menu.Item>
+      </Container>
+    </Menu>
 )
 
 export default Header

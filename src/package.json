@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "react-big-calendar": "^0.14.4"
+  },
+  "devDependencies": {
+    "semantic-ui": "^2.2.13"
   }
 }

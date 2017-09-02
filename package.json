@@ -6,26 +6,31 @@
   "dependencies": {
     "moment": "^2.18.1",
     "react": "^15.6.1",
-    "react-big-calendar": "^0.14.4",
     "react-dom": "^15.6.1",
+    "react-event-calendar": "^0.3.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "node-less-chokidar": "^0.1.2",
     "react-relay": "^1.2.0",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.11",
+    "semantic-ui-react": "^0.72.0",
     "source-map-explorer": "^1.4.0"
   },
   "scripts": {
+    "build-css": "node-less-chokidar src/components/ -o src/components/",
+    "watch-css": "npm run build-css && node-less-chokidar src/components/ -o src/components/ --watch --recursive",
     "build": "node ./setup && react-scripts build",
     "test": "node ./setup && react-scripts test --env=jsdom",
-
     "//": "Putting 1 & intentionally after watch so the server starts",
     "start": "node ./setup && yarn run relay -- --watch & PORT=8080 react-scripts start",
-
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer build/static/js/main.*",
-    "relay": "curl http://localhost:3000/date_book_schema.graphql -o ./src/schema.graphql && relay-compiler --src ./src --schema ./src/schema.graphql"    
+    "relay": "curl http://localhost:3000/date_book_schema.graphql -o ./src/schema.graphql && relay-compiler --src ./src --schema ./src/schema.graphql"
   },
   "devDependencies": {
     "babel-plugin-relay": "^1.2.0",
-    "relay-compiler": "^1.2.0"
+    "relay-compiler": "^1.2.0",
+    "semantic-ui": "^2.2.13",
+    "gulp": "^3.9.1"
   }
 }
