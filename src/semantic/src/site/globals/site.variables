@@ -1,3 +1,14 @@
 /*******************************
      User Global Variables
 *******************************/
+
+@grey: #ccc;
+@gray: @grey;
+
+
+@eventBorderRadius: .3rem;
+@eventMargin: .5rem ;
+@eventPadding: .25rem .5rem;
+@eventBackgroundColor: @pink;
+@eventBorderColor: @violet;
+@eventFontSize: 14px;

@@ -111,20 +111,20 @@ class Calendars extends Component {
 
           <Grid>
             <Grid.Row>
-              <Grid.Column xs={6}>
+              <Grid.Column width={8}>
                 <Menu>
-                  <Menu.Item onClick={this.handlePreviousMonth}>&lt;</Menu.Item>
-                  <Menu.Item onClick={this.handleNextMonth}>&gt;</Menu.Item>
-                  <Menu.Item onClick={this.handleToday}>Today</Menu.Item>
+                  <Button onClick={this.handlePreviousMonth}>&lt;</Button>
+                  <Button onClick={this.handleNextMonth}>&gt;</Button>
+                  <Button onClick={this.handleToday}>Today</Button>
                 </Menu>
               </Grid.Column>
-              <Grid.Column xs={6}>
-                <div className="pull-right h2">{this.getHumanDate()}</div>
+              <Grid.Column width={8}>
+                <h1>{this.getHumanDate()}</h1>
               </Grid.Column>
             </Grid.Row>
             <br />
             <Grid.Row>
-              <Grid.Column xs={12}>
+              <Grid.Column width={16}>
 
                 <QueryRenderer
                     environment={environment}
@@ -166,17 +166,6 @@ class Calendars extends Component {
                           }
                           if (event.calendar.css_class !== null) {
                             classNames.push(event.calendar.css_class)
-                          }
-
-                          {/*start: today.date(data.start).format(dataFormat),*/
-                          }
-                          {/*end: today.add(data.length-1, 'days').format(dataFormat),*/
-                          }
-                          {/*eventClasses: 'custom-event-class',*/
-                          }
-                          {/*title: data.length + ' day event ' + (data.title || ''),*/
-                          }
-                          {/*description: description*/
                           }
 
                           return ({

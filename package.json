@@ -22,7 +22,7 @@
     "build": "node ./setup && react-scripts build",
     "test": "node ./setup && react-scripts test --env=jsdom",
     "//": "Putting 1 & intentionally after watch so the server starts",
-    "start": "node ./setup && yarn run relay -- --watch & PORT=8080 react-scripts start",
+    "start": "node ./setup && yarn run relay -- --watch & gulp watch & PORT=8080 react-scripts start",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer build/static/js/main.*",
     "relay": "curl http://localhost:3000/date_book_schema.graphql -o ./src/schema.graphql && relay-compiler --src ./src --schema ./src/schema.graphql"
