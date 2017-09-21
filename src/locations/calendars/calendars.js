@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {QueryRenderer, graphql} from 'react-relay'
-import environment from './environment'
+import environment from '../../environment'
 import EventCalendar from 'react-event-calendar'
 import moment from 'moment'
 import {Grid, Menu, Button, Popup, Popover, Modal} from 'semantic-ui-react'

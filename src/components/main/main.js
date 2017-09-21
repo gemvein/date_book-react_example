@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendars from './calendars'
+import Calendars from '../../locations/calendars'
 import { Switch, Route } from 'react-router-dom'
 
 const Main = () => (
