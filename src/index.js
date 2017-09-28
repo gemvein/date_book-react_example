@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom'
-import './semantic/dist/semantic.min.css';
 import App from './components/app/app';
+import './semantic.min.css';
 // import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
 

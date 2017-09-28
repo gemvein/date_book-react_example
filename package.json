@@ -17,8 +17,6 @@
     "source-map-explorer": "^1.4.0"
   },
   "scripts": {
-    "build-css": "node-less-chokidar src/components/ -o src/components/",
-    "watch-css": "npm run build-css && node-less-chokidar src/components/ -o src/components/ --watch --recursive",
     "build": "node ./setup && react-scripts build",
     "test": "node ./setup && react-scripts test --env=jsdom",
     "//": "Putting 1 & intentionally after watch so the server starts",
