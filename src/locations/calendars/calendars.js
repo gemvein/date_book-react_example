@@ -4,12 +4,11 @@ import {QueryRenderer, graphql} from 'react-relay'
 import environment from '../../environment'
 import EventCalendar from 'react-event-calendar'
 import moment from 'moment'
-import {Grid, Menu, Button, Popup, Popover, Modal} from 'semantic-ui-react'
+import {Grid, Menu, Button, Popup, Popover, Modal, Dimmer, Loader} from 'semantic-ui-react'
 
 import 'react-event-calendar/style.css'
 
-
-const dataFormat = 'YYYY-MM-DD';
+const dataFormat = 'YYYY-MM-DD'
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',]
 
 class Calendars extends Component {
@@ -109,87 +108,87 @@ class Calendars extends Component {
     return (
         <div className="calendars">
 
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={8}>
-                <Menu>
-                  <Button onClick={this.handlePreviousMonth}>&lt;</Button>
-                  <Button onClick={this.handleNextMonth}>&gt;</Button>
-                  <Button onClick={this.handleToday}>Today</Button>
-                </Menu>
-              </Grid.Column>
-              <Grid.Column width={8}>
-                <h1>{this.getHumanDate()}</h1>
-              </Grid.Column>
-            </Grid.Row>
-            <br />
-            <Grid.Row>
-              <Grid.Column width={16}>
-
-                <QueryRenderer
-                    environment={environment}
-                    query={graphql`
-                query calendarsQuery {
-                  event_occurrences {
-                    start,
-                    end,
-                    url,
-                    popover_url,
-                    event {
-                      id,
-                      name,
-                      slug,
-                      all_day,
+          <QueryRenderer
+            environment={environment}
+            query={graphql`
+              query calendarsQuery {
+                event_occurrences {
+                  start,
+                  end,
+                  url,
+                  popover_url,
+                  event {
+                    id,
+                    name,
+                    slug,
+                    all_day,
+                    css_class,
+                    calendar {
                       css_class,
-                      calendar {
-                        css_class,
-                        text_color,
-                        background_color,
-                        border_color
-                      }
+                      text_color,
+                      background_color,
+                      border_color
                     }
                   }
                 }
-              `}
+              }
+            `}
 
-                    render={({error, props}) => {
-                      if (error) {
-                        return <div>{error.message}</div>
-                      } else if (props) {
+            render={({error, props}) => {
+              if (error) {
+                return <div>{error.message}</div>
+              } else if (props) {
 
-                        const events = props.event_occurrences.map((occurrence) => {
-                          let event = occurrence.event
-                          let classNames = []
+                const events = props.event_occurrences.map((occurrence) => {
+                  let event = occurrence.event
+                  let classNames = []
 
-                          if (event.css_class !== null) {
-                            classNames.push(event.css_class)
-                          }
-                          if (event.calendar.css_class !== null) {
-                            classNames.push(event.calendar.css_class)
-                          }
+                  if (event.css_class !== null) {
+                    classNames.push(event.css_class)
+                  }
+                  if (event.calendar.css_class !== null) {
+                    classNames.push(event.calendar.css_class)
+                  }
 
-                          return ({
-                            id: event.id,
-                            title: event.name,
-                            description: event.description,
-                            eventClasses: classNames.join(' '),
-                            data: {
-                              allDay: event.all_day,
-                              url: occurrence.url,
-                              popover_url: occurrence.popover_url,
-                              style: {
-                                color: event.textColor,
-                                backgroundColor: event.calendar.background_color,
-                                borderColor: event.calendar.border_color
-                              }
-                            },
-                            start: moment(occurrence.start).format(dataFormat),
-                            end: moment(occurrence.end).subtract(1, 'seconds').format(dataFormat),
+                  return ({
+                    id: event.id,
+                    title: event.name,
+                    description: event.description,
+                    eventClasses: classNames.join(' '),
+                    data: {
+                      allDay: event.all_day,
+                      url: occurrence.url,
+                      popover_url: occurrence.popover_url,
+                      style: {
+                        color: event.textColor,
+                        backgroundColor: event.calendar.background_color,
+                        borderColor: event.calendar.border_color
+                      }
+                    },
+                    start: moment(occurrence.start).format(dataFormat),
+                    end: moment(occurrence.end).subtract(1, 'seconds').format(dataFormat),
 
-                          })
-                        })
+                  })
+                })
 
-                        return <EventCalendar
+                return (
+                  <Grid>
+                    <Grid.Row>
+                      <Grid.Column width={8}>
+                        <Menu>
+                          <Button onClick={this.handlePreviousMonth}>&lt;</Button>
+                          <Button onClick={this.handleNextMonth}>&gt;</Button>
+                          <Button onClick={this.handleToday}>Today</Button>
+                        </Menu>
+                      </Grid.Column>
+                      <Grid.Column width={8}>
+                        <h1>{this.getHumanDate()}</h1>
+                      </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Grid.Column width={16}>
+
+                        <EventCalendar
                             month={this.state.moment.month()}
                             year={this.state.moment.year()}
                             events={events}
@@ -199,22 +198,28 @@ class Calendars extends Component {
                             onDayClick={this.handleDayClick}
                             maxEventSlots={10}
                         />
-                      }
-                      return <div>Loading</div>
-                    }}
-                /> {/* End QueryRenderer */}
 
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+                )
+              }
+
+              return (
+                <Dimmer inverted active>
+                  <Loader active size='massive' inverted>Loading</Loader>
+                </Dimmer>
+              )
+            }}
+          /> {/* End QueryRenderer */}
 
           <Popup
-              show={this.state.showPopover}
-              rootClose
-              onHide={() => this.setState({showPopover: false,})}
-              placement="top"
-              container={this}
-              target={this.state.popoverTarget}>
+            show={this.state.showPopover}
+            rootClose
+            onHide={() => this.setState({showPopover: false,})}
+            placement="top"
+            container={this}
+            target={this.state.popoverTarget}>
             {/*<Popover id="event">{this.state.popupTitle}</Popover>*/}
           </Popup>
 
@@ -229,7 +234,6 @@ class Calendars extends Component {
               <Button onClick={this.handleModalClose}>Close</Button>
             </Modal.Actions>
           </Modal>
-
         </div>
     )
   }
