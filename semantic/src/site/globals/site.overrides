@@ -4,16 +4,15 @@
 
 
 .flexColumn.day {
-    border-left: 1px @teal solid;
-    border-top: 1px @teal solid;
-    padding: 1em;
+    border-left: 1px @grey solid;
+    border-top: 1px @grey solid;
     &:nth-child(7n+7)  {
-        border-right: 1px @teal solid;
+        border-right: 1px @grey solid;
     }
 }
 
 .flexContainer {
-    border-bottom: 1px @teal solid;
+    border-bottom: 1px @grey solid;
 }
 
 .calendars {
@@ -73,7 +72,7 @@ html {
     white-space: nowrap;
     text-indent: -10000px;
     cursor: pointer;
-} 
+}
 
 .day .event-slot .event-title {
     position: absolute;
@@ -96,9 +95,9 @@ html {
     margin-right: @eventMargin;
     border-top-right-radius: @eventBorderRadius;
     border-bottom-right-radius: @eventBorderRadius;
-}  
+}
 
 .day .date {
     padding: @eventPadding;
     text-align: right;
-}   
+}

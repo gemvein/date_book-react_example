@@ -6,8 +6,6 @@ import EventCalendar from 'react-event-calendar'
 import moment from 'moment'
 import {Grid, Menu, Button, Popup, Popover, Modal, Dimmer, Loader} from 'semantic-ui-react'
 
-import 'react-event-calendar/style.css'
-
 const dataFormat = 'YYYY-MM-DD'
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',]
 

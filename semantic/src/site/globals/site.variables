@@ -4,11 +4,11 @@
 
 @grey: #ccc;
 @gray: @grey;
-
+@blue: #6495ED; // Cornflower blue
 
 @eventBorderRadius: .3rem;
 @eventMargin: .5rem ;
 @eventPadding: .25rem .5rem;
-@eventBackgroundColor: @pink;
+@eventBackgroundColor: @blue;
 @eventBorderColor: @violet;
 @eventFontSize: 14px;

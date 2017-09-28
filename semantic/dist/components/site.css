@@ -202,15 +202,14 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 *******************************/
 
 .flexColumn.day {
-  border-left: 1px #00B5AD solid;
-  border-top: 1px #00B5AD solid;
-  padding: 1em;
+  border-left: 1px #ccc solid;
+  border-top: 1px #ccc solid;
 }
 .flexColumn.day:nth-child(7n+7) {
-  border-right: 1px #00B5AD solid;
+  border-right: 1px #ccc solid;
 }
 .flexContainer {
-  border-bottom: 1px #00B5AD solid;
+  border-bottom: 1px #ccc solid;
 }
 .calendars {
   margin-top: 2em;
@@ -267,8 +266,8 @@ html {
   font-size: 14px;
 }
 .day .event-slot.event {
-  background: #E03997;
-  color: #E03997;
+  background: #6495ED;
+  color: #6495ED;
   white-space: nowrap;
   text-indent: -10000px;
   cursor: pointer;
