@@ -4,16 +4,19 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "gulp-autoprefixer": "^2.3.1",
-    "moment": "^2.18.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-event-calendar": "^0.3.0",
-    "react-relay": "^1.2.0",
-    "react-router-dom": "^4.1.2",
-    "react-scripts": "1.0.11",
-    "semantic-ui-react": "^0.72.0",
-    "source-map-explorer": "^1.4.0"
+    "babel-plugin-relay": "^1.4.1",
+    "dayz": "^0.8.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "moment": "^2.19.3",
+    "moment-range": "^3.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-relay": "^1.4.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "relay-compiler": "^1.4.1",
+    "semantic-ui-react": "^0.77.0",
+    "source-map-explorer": "^1.5.0"
   },
   "scripts": {
     "build": "node ./setup && react-scripts build",
@@ -25,9 +28,7 @@
     "relay": "curl http://localhost:3000/date_book_schema.graphql -o ./src/schema.graphql && relay-compiler --src ./src --schema ./src/schema.graphql"
   },
   "devDependencies": {
-    "babel-plugin-relay": "^1.2.0",
     "gulp": "^3.9.1",
-    "relay-compiler": "^1.2.0",
     "semantic-ui": "^2.2.13"
   }
 }
