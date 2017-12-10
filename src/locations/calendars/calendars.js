@@ -169,8 +169,10 @@ class Calendars extends Component {
                               moment(occurrence.start).format(dataFormat),
                               moment(occurrence.end).subtract(1, 'seconds').format(dataFormat)
                           ),
+                          // TODO: Refactor date_book API to send only color name 
                           // TODO: Map this to API values.
                           // TODO: Figure out how many colors we want to implement in the stylesheet
+
                           colorIndex: "blue"
                         })
                       })
